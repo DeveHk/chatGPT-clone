@@ -16,7 +16,7 @@ export default function ChaSideNav({ chatlog, setActivechat }: any) {
   };
   const newchat = () => {};
   return (
-    <div className="flex flex-col border-r bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
+    <div className="  h-screen flex flex-col border-r bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
       <div
         onClick={newchat}
         className="flex h-14 hover:bg-gray-300 items-center justify-between border-b px-4 dark:border-gray-800"
@@ -36,7 +36,7 @@ export default function ChaSideNav({ chatlog, setActivechat }: any) {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-scroll ">
         <nav className="space-y-2 p-4">
           {chatlog.map((chat: any, i: any) => (
             <Button

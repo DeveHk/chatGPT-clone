@@ -25,7 +25,7 @@ export default function Chat({ user }: any) {
   }, []);
   console.log(user);
   return (
-    <div className="grid h-screen w-full grid-cols-[300px_1fr] overflow-hidden">
+    <div className=" grid h-screen w-full grid-cols-[300px_1fr] ">
       <ChaSideNav chatlog={chats} setActivechat={setActivechat}></ChaSideNav>
       <ChatPanel activechat={activechat}></ChatPanel>
     </div>
