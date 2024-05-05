@@ -13,7 +13,7 @@ async function page() {
   }
   return (
     <div className="w-full min-h-screen flex justify-center items-center">
-      <Chat></Chat>
+      <Chat user={user}></Chat>
     </div>
   );
 }

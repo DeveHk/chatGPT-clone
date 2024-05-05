@@ -6,63 +6,65 @@ import { IoIosCreate } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { FaArrowUp } from "react-icons/fa";
 import ChatPanel from "./ChatPanel";
+import { AiOutlineOpenAI } from "react-icons/ai";
+import { LuLogOut } from "react-icons/lu";
 
-export default function ChaSideNav() {
+export default function ChaSideNav({ chatlog, setActivechat }: any) {
+  const switchchat = (chat: any) => {
+    //console.log(chat.id);
+    setActivechat(chat.id);
+  };
+  const newchat = () => {};
   return (
     <div className="flex flex-col border-r bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
-      <div className="flex h-14 items-center justify-between border-b px-4 dark:border-gray-800">
+      <div
+        onClick={newchat}
+        className="flex h-14 hover:bg-gray-300 items-center justify-between border-b px-4 dark:border-gray-800"
+      >
         <div className="flex items-center gap-2">
           <Avatar>
-            <AvatarImage src="/placeholder-user.jpg" />
-            <AvatarFallback>JD</AvatarFallback>
+            <AiOutlineOpenAI className="w-full h-full"></AiOutlineOpenAI>
           </Avatar>
           <div className="space-y-0.5">
-            <h5 className="text-sm font-medium">John Doe</h5>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Online</p>
+            <h5 className="text-sm font-medium">New Chat</h5>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Button size="icon" variant="ghost">
-            <CiSearch className="h-5 w-5" />
-          </Button>
           <Button size="icon" variant="ghost">
             <IoIosCreate className="h-5 w-5" />
           </Button>
         </div>
       </div>
+
       <div className="flex-1 overflow-y-auto">
         <nav className="space-y-2 p-4">
-          <Link
-            className="flex items-center gap-2 rounded-md bg-gray-200 px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
-            href="#"
-          >
-            General Chat
-          </Link>
-          <Link
-            className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-200 dark:hover:bg-gray-800"
-            href="#"
-          >
-            Team Chat
-          </Link>
-          <Link
-            className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-200 dark:hover:bg-gray-800"
-            href="#"
-          >
-            Project Updates
-          </Link>
-          <Link
-            className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-200 dark:hover:bg-gray-800"
-            href="#"
-          >
-            Client Discussions
-          </Link>
-          <Link
-            className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-200 dark:hover:bg-gray-800"
-            href="#"
-          >
-            Archived Chats
-          </Link>
+          {chatlog.map((chat: any, i: any) => (
+            <Button
+              onClick={() => switchchat(chat)}
+              key={i}
+              className=" flex justify-start rounded-md bg-gray-200 px-3 py-2 text-black dark:text-white w-full  text-sm font-medium transition-colors hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
+            >
+              {chat.title}
+            </Button>
+          ))}
         </nav>
+      </div>
+      <div className="flex h-14 items-center justify-between border-b px-4 dark:border-gray-800">
+        <div className="flex items-center gap-2">
+          <Avatar>
+            <AvatarImage src="/placeholder-user.jpg" />
+            <AvatarFallback>Y</AvatarFallback>
+          </Avatar>
+          <div className="space-y-0.5">
+            <h5 className="text-sm font-medium">Harsh</h5>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Online</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button size="icon" variant="ghost">
+            <LuLogOut className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
     </div>
   );
